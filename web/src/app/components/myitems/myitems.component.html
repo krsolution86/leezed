@@ -1,0 +1,206 @@
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let ord of myItems ;  let i=index;  " hideToggle="false">
+    <mat-expansion-panel-header class="specific-class">
+      <mat-panel-title>
+
+        <div id="main-container">
+          <div id="left-content">
+            <span class="pnLabel">
+              {{ord?.name}}
+            </span>
+          </div>
+
+
+          <div id="right-content">
+            <a mat-button (click)="$event.stopPropagation();"
+              style="  color: #ffffff;   font-weight: 700;   text-decoration: underline;"
+              [routerLink]="['/edit-product',ord.productID]"> <img class="imgBtn"
+                src="../../../assets/images/Edit_Btn.png" alt="Edit" /></a>
+          </div>
+        </div>
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        
+        </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+
+
+      <div class="card">
+
+        <img [src]="ord?.thumbnailUrl" alt="item image" class="itemImg card-image" />
+        <!-- <div class="container input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                    <div class="col" fsFlex>
+                        <label for="pLoc" class="vLabel">ITEM NAME</label>
+                        <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                            <span> {{ord?.name}}
+                            </span>
+                        </p>
+
+                    </div>
+                    <div class="col" fsFlex>
+
+                        <label for="pLoc" class="vLabel">EXPIRES</label>
+                        <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                            <span> {{ord?.availableTillDate |  date:'MMM-dd-yyyy'  }} <star-rating value="4"
+                                    checkedcolor="red" uncheckedcolor="white" size="24px" readonly="true">
+                                </star-rating>
+
+                            </span>
+
+                        </p>
+
+
+                    </div>
+
+                </div> -->
+      </div>
+
+      <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div class="col" fxFlex>
+          <label for="pLoc" class="vLabel">Name</label>
+          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+            <span> {{ord.name}}
+            </span>
+
+          </p>
+        </div>
+
+        <div class="col" fxFlex> <label for="pLoc" class="vLabel">Price</label>
+          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+            <span> {{ord.rentPrice | currency}}&nbsp;per &nbsp;<span>{{ord.durationUnit | titlecase }}</span>
+            </span>
+
+          </p>
+        </div>
+      </div>
+      <div class="input-row">
+        <label for="pdesc" class="vLabel">Description</label>
+
+        <textarea class="textarea inputTextArea " id="pdesc" name="pdesc" readonly>{{ord?.productDesc}}</textarea>
+
+      </div>
+      <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div class="col" fxFlex>
+          <label for="pLoc" class="vLabel">Category</label>
+          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+            <span> {{ord?.categoryName}}
+            </span>
+
+          </p>
+        </div>
+
+        <div class="col" fxFlex> <label for="pLoc" class="vLabel">Deposit($)</label>
+          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+            <span> {{ord.minRental}}
+              <!-- &nbsp;<span>{{ord.durationUnit | titlecase }} </span> -->
+            </span>
+
+          </p>
+        </div>
+      </div>
+
+      <!-- <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <div class="col" fxFlex>
+                      
+                
+                          <label for="pLoc" class="vLabel">Rented From</label>
+                          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                            <span> {{ord.rentedFrom}} &nbsp; <star-rating value="4" checkedcolor="red" uncheckedcolor="white"
+                                size="24px" readonly="true"></star-rating>
+                  
+                            </span>
+                  
+                          </p>
+                        </div>
+                
+                        <div class="col" fxFlex >
+                            <label for="pLoc" class="vLabel">Requested By</label>
+                            <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                              <span> {{ord?.requestedBy}}
+                    
+                              </span>&nbsp; <star-rating value="4.5" checkedcolor="blue" uncheckedcolor="white"
+                              size="24px" readonly="true"></star-rating>
+                    
+                            </p>
+                
+                        </div>
+                      
+                        </div> -->
+      <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div class="col" fxFlex>
+          <label for="pavai" class="vLabel">Available From</label>
+
+          <label class="inputTypeLbl" id="pavai" name="pLoc">{{ord.availableFromDate |  date:'MMM-dd-yyyy'  }}</label>
+        </div>
+        <div class="col" fxFlex>
+          <label for="pavaito" class="vLabel">Available Till</label>
+
+          <label class="inputTypeLbl" id="pavaito" name="pLoc">{{ord.availableToDate |  date:'MMM-dd-yyyy'  }}</label>
+        </div>
+      </div>
+      <!-- <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                       
+                
+                
+                
+                    </div> -->
+      <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div class="col" fxFlex>
+
+          <label for="pLoc" class="vLabel">City/State</label>
+          <label id="pLoca" name="pLoc" class="inputTypeLbl">
+            <span> {{ord?.location}}
+
+            </span>
+
+          </label>
+        </div>
+        <div class="col" fxFlex>
+          <label for="pLoc" class="vLabel">Zipcode</label>
+          <label class="inputTypeLbl" id="pavaito" name="pLoc"> {{ord?.zipCode==undefined?'N/A':ord?.zipCode}}</label>
+
+
+
+        </div>
+
+      </div>
+
+      <div class="input-row">
+
+        <label for="pLoc" class="vLabel">Pick-up Instructions</label>
+        <p id="pLoca" name="pLoc" class="inputTypeLbl">
+          <span> {{ord?.pickupInstructions==""?'None':ord?.pickupInstructions}}
+
+          </span>
+
+        </p>
+
+
+      </div>
+
+
+      <!-- <div class="input-row">
+                
+                          <label for="pLoc" class="vLabel">Comments</label>
+                          <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                            <span> {{(ord?.approvalComments=="" || ord?.approvalComments==undefined || ord?.approvalComments==null)?'None':ord?.approvalComments}}
+                  
+                            </span>
+                  
+                          </p>
+                  
+                  
+                        </div> -->
+
+
+
+
+    </div>
+
+  </mat-expansion-panel>
+
+
+</mat-accordion>

@@ -1,0 +1,88 @@
+<div class="searchbar">
+  <form class="example-form">
+
+    <!-- <div class="field has-addons">
+                      <div class="control" >
+                          <mat-icon matSuffix matTooltip="Change Location" class="locationBtn" [satPopoverAnchor]='popover' (click)="popover.toggle()"  [ngStyle]="{'color':(position!=null && position!=undefined) || (currentLoc?.lat)?'blue':'black' }">location_on</mat-icon>
+                         
+                            <sat-popover #popover  hasBackdrop verticalAlign="below" horizontalAlign="center">
+                              <app-location-change ></app-location-change>
+                            </sat-popover>
+                      </div>
+                        <div class="control">
+                          <input class="input searchInput" [formControl]="stateCtrl" 
+                          #stctrl type="text"  placeholder="search products" />
+                        </div>
+                        <div class="control searchBoxIcon">
+                          	<mat-icon>search</mat-icon>
+                         
+                        </div>
+                    
+                      </div> -->
+    <div class="field has-addons searchBarContainer">
+      <div class="field has-addons stateCtrl">
+        <div class="control">
+          <a class="button blackBtn">
+            Find
+          </a>
+        </div>
+        <div class="control stateCtrl">
+          <input type="text" (keydown.enter)="$event.preventDefault()" class="input searchInput nearbybutton "
+           [formControl]="stateCtrl" 
+           #stctrl
+            
+            placeholder="search products" />
+        </div>
+
+      </div>
+      <div class="field has-addons">
+        <div class="control">
+          <a class="button nearbtn blackBtn ">
+            Near
+          </a>
+        </div>
+        <div class="control">
+          <button type="button" class="button nearbybutton" matTooltip="Change Location" [satPopoverAnchor]='popover'
+            (click)="popover.toggle()"
+          >
+            <span 
+            class="blackBtn"
+           
+         *ngIf="currentLoc?.City"> {{currentLoc?.City}}, {{currentLoc?.State}}</span>
+
+            <span class="icon is-small">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </button>
+        
+
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+<!-- responsive ul -->
+<div class="product-wrap">
+  <ul class="product-list">
+    <li *ngFor="let product of filteredProducts |async">
+      <app-product [Product]="product"></app-product>
+    </li>
+  </ul>
+</div>
+<sat-popover #popover hasBackdrop verticalAlign="below" horizontalAlign="center">
+  <app-location-change></app-location-change>
+</sat-popover>
+
+<!-- 
+ <div class="items">
+
+        <div class="item" >
+                <app-product [Product]="product"></app-product>
+        </div>
+
+</div> -->
+

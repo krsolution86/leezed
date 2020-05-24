@@ -1,0 +1,171 @@
+.productViewClass {
+    margin: 0px auto!important;
+    max-width: 50rem;
+  }
+  .prodImg{
+    max-width: 20rem!important;
+    border: 1px solid darkorange;
+    border-radius: 10px;
+  }
+
+  .input-row {
+
+    
+    text-align: left !important;
+    margin-left: 10px!important;
+    margin-bottom: 10px!important;
+}
+
+.card-image {
+ 
+  width:200px;
+  margin: 0px auto !important;
+  height: 200px;
+
+  object-fit: contain!important;
+}
+
+.textarea:not([rows]) {
+  max-height: 40em;
+  min-height: 5em!important;
+  border: none!important;
+}
+
+.mat-icon-button {
+  padding: 0;
+  min-width: 0;
+  width: auto!important;
+  height: 40px;
+  flex-shrink: 0;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+  input[type=text], select {
+    width: 100%;
+    // padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    // border: 1px solid #ccc;
+    background: transparent!important;
+    color:white!important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: none!important;
+    padding: 0px!important;
+  }
+  .owl-date{
+    max-width: 100px;
+    border-radius: 5px;
+  }
+
+  label.inputTypeLbl {
+    width: 100%;
+    // padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    // border: 1px solid #ccc;
+    background: transparent !important;
+    color: white !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: none!important;
+    padding: 0px!important;
+  }
+
+
+  .viewContainer {
+    background: black;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    margin: 5px;
+}
+label.vLabel {
+  color: darkorange!important;
+  font-weight: 700;
+}
+
+
+
+mat-form-field {
+  background: white!important;
+  border-radius: 10px!important;
+
+  border: 3px solid #f49820!important;
+}
+
+.datePickerCustom {
+  max-width: 14rem!important;
+  margin: 5px!important;
+  color: black!important;
+  /* max-height: 97px; */
+}
+
+form.rentFromCls {
+  background: #292929;
+  border-radius: 10px;
+  margin-top: 50px;
+  color: white;
+  padding: 15px;
+}
+.rightLBL {
+  // margin-left: 5rem;
+  background: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+label.priceLbl {
+  font-size: large;
+}
+
+
+
+.demo {
+  &-code {
+    font-family: "Roboto Mono";
+  }
+
+  &-container {
+    padding: 15px;
+  }
+
+  &-source {
+    margin-left: 15px;
+  }
+
+  &-spacer {
+    flex: 1 1 auto;
+  }
+
+  &-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  &-margin {
+    margin: 0 10px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  &-carousel {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+
+.inputTextArea{
+  background: transparent !important;
+    color: white !important;
+}

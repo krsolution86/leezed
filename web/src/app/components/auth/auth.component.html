@@ -1,0 +1,176 @@
+<form [formGroup]="mySignUpForm" novalidate (ngSubmit)="signUp()" *ngIf="!showLogin">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+
+      <mat-card-title>
+        
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="auth-card-content">
+      <!-- <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="username">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>email</mat-icon> <span> Email</span></mat-label>
+            <input matInput placeholder="Username (Email) " formControlName="email">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+           
+            <mat-label><mat-icon>lock</mat-icon> <span> Password</span></mat-label>
+            <input type="password" matInput formControlName="password" >
+          </mat-form-field>
+          <password-strength-bar [passwordToCheck]="mySignUpForm.controls.password.value" [barLabel]="barLabel"></password-strength-bar>
+      
+        </div>
+      </div>
+   
+
+      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>lock</mat-icon> <span> Confirm Password</span></mat-label>
+        
+            <input type="password" matInput formControlName="confirmPassword"  [errorStateMatcher]="matcher"  #confirm_password>
+            <mat-error *ngIf="mySignUpForm.hasError('notSame')">
+              Password & Confirm Password do not match!
+          </mat-error>        
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>person_pin</mat-icon> <span> Name</span></mat-label>
+            <input matInput placeholder="Name (Optional)" formControlName="name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>people</mat-icon> <span> Screen Name</span></mat-label>
+            <input matInput placeholder="Screen Name)" formControlName="screenName">
+          </mat-form-field>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>contact_phone</mat-icon> <span> Phone</span></mat-label>        
+            <input matInput type="text" minlength=10 maxlength=14 formControlName="phone" mask="(000) 000-0000"
+              id="materialContactFormPhone" class="form-control">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col">
+
+        <mat-checkbox class="example-margin" name="disclaimerStatus" formControlName="disclaimerStatus"><span
+            class="checkbox-label" #terms>
+            By clicking on Signup, you agree to
+            <a (click)="showDialog('TOU')">Terms of Use</a> & <a (click)="showDialog('PP')">Privacy Policy</a>.</span></mat-checkbox>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<form [formGroup]="mySignInForm" novalidate (ngSubmit)="signIn()" *ngIf="showLogin">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+
+      <mat-card-title>   
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="auth-card-content">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>email</mat-icon> <span> Email</span></mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>lock</mat-icon> <span> Password</span></mat-label>
+            <input type="password" placeholder="Password" matInput formControlName="password">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+         
+           
+                <mat-checkbox formControlName="remember">Remember me</mat-checkbox>
+          
+         
+        </div>
+<div class="row">
+  <a [routerLink]="['/resetpassword']" class="anchorlink">Forgot Password? </a>  
+</div>
+
+      <!-- <div class="row">
+        <div class="col">
+          <mat-checkbox class="example-margin" name="disclaimer">Disclaimer</mat-checkbox>
+        </div>
+      </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-icon-button color="primary" class="imageBtn" type="submit" aria-label="Example icon-button">
+           <img src="./../../../assets/images/signin.png" alt="Sign In" style="
+           height: 2rem;
+        
+       "/>
+          </button>
+     <br/>
+ 
+      <a mat-button [routerLink]="['/auth', 'signup']">Don't have an account! </a>
+      <hr/>
+
+
+      <div class="tile is-ancestor">
+          <div class="tile is-parent">
+              <article class="tile is-child box" style="
+              text-align: right;
+          ">
+
+                  <button mat-icon-button  style=" width: 190px; border-radius: 0px;">
+                      <img  src="./../../../assets/images/loginwithfacebook.jpg" style="    height: auto;
+                      border-radius: 5px;
+                      width: 95%;" alt="facebook login" />
+                    </button>
+                <!-- <img  (click)="facebookLogin();" src="./../../../assets/images/loginwithfacebook.jpg" alt="login with google" class="socialLogin"/> -->
+                 </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box" style="
+            text-align: left;
+        ">
+
+                <button mat-icon-button  style=" width: 190px; border-radius: 0px;">
+                    <img src="./../../../assets/images/loginwithgoogle.jpg" alt="login with google"  style="    height: auto;
+                    border-radius: 5px;
+                    width: 95%;" />
+                  </button>
+                <!-- <img (click)="googleLogin();" src="./../../../assets/images/loginwithgoogle.jpg" alt="login with google" class="socialLogin"/> -->
+            </article>
+          </div>
+        </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

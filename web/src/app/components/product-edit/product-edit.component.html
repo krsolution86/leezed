@@ -1,0 +1,261 @@
+<mat-horizontal-stepper [linear]="!isLinear" #stepper>
+  <ng-template matStepperIcon="edit">
+    <mat-icon>bubble_chart</mat-icon>
+  </ng-template>
+  <mat-step>
+    <ng-template matStepLabel>Product Details</ng-template>
+    <div class="matStepperContainer">
+      <form [formGroup]="productForm" fxLayout="column" novalidate (ngSubmit)="onSubmit()">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="name">
+            <span class="inValid"
+              *ngIf="(productForm.controls['name'].dirty || productForm.controls['name'].touched)  && productForm.controls['name'].hasError('required')">
+              Name is <strong>required</strong>
+
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Category</label>
+          <div class="control">
+            <div class="select">
+              <select formControlName="categoryID">
+                <option *ngFor="let code of Categories" [value]="code.categoryID">
+                  {{ code.name }}
+                </option>
+              </select>
+
+              <span class="inValid"
+                *ngIf=" productForm.dirty && (productForm.controls['categoryID'].dirty || productForm.controls['categoryID'].touched)   &&  productForm.controls['categoryID'].hasError('required')">
+                Category is <strong>required</strong>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="field has-addons">
+          <div class="control">
+            <label class="label">Price($)</label>
+            <div class="control">
+
+              <!-- <input type="number" step="0.01" 
+                (change)="setTwoNumberDecimal($event)"
+                (ngModelChange)="item.value=$event"
+                [ngModelOptions]="{updateOn: 'blur'}"
+                [ngModel]="setting.decimal_value | number:'1.2-2'"> -->
+              <input class="input rentprice" type="number" min="0" max="50000" formControlName="rentPrice">
+              <span class="inValid"
+                *ngIf="productForm.dirty && (productForm.controls['rentPrice'].dirty || productForm.controls['rentPrice'].touched)  &&  productForm.controls['rentPrice'].hasError('required')">
+                Price is <strong>required</strong>
+
+              </span>
+            </div>
+          </div>
+
+          <div class="control">
+            <label class="label">Duration</label>
+            <div class="control">
+              <div class="select">
+                <select formControlName="durationUnit">
+                  <option *ngFor="let code of RentUnits" [value]="code.Code">
+                    {{ code.Description }}</option>
+                </select>
+                <span class="inValid"
+                  *ngIf=" productForm.dirty && (productForm.controls['durationUnit'].dirty || productForm.controls['durationUnit'].touched) &&  productForm.controls['durationUnit'].hasError('required')">
+                  Duration is <strong>required</strong>
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+        <div class="field">
+          <label class="label">Deposit($)</label>
+          <div class="control ">
+
+
+            <input type="number" 
+            style="
+            max-width: 50%;   "
+      
+             class="input" min="1" max="99" placeholder="Min rental" formControlName="minRental">
+
+            <span class="inValid"
+              *ngIf="productForm.dirty && (productForm.controls['minRental'].dirty || productForm.controls['minRental'].touched)  &&   productForm.controls['minRental'].hasError('required')">
+              Min Rental <strong>required</strong>
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Description" rows="1" #input maxlength="2000"
+              formControlName="description"></textarea>
+            <mat-hint align="end" style="
+              float: right;
+              color: white;
+              font-size: 11px;
+          ">{{2000-(input.value?.length) || 0}}/2000</mat-hint>
+
+
+
+            <!-- <mat-hint align="end">{{input.value?.length || 0}}/2000</mat-hint> -->
+            <span class="inValid"
+              *ngIf=" productForm.dirty && (productForm.controls['description'].dirty || productForm.controls['description'].touched)  &&  productForm.controls['description'].hasError('required')">
+              Description <strong>required</strong>
+            </span>
+            <span class="inValid"
+              *ngIf=" productForm.dirty && (productForm.controls['description'].dirty || productForm.controls['description'].touched)  &&  productForm.controls['description'].hasError('maxlength')">
+              Description <strong>max allowed characters reached.</strong>
+            </span>
+
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="label">Pick-up Instructions</label>
+          <div class="control">
+
+            <input class="input" placeholder="pick-up instructions" formControlName="pickupInstructions" />
+
+
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+
+            <label class="label">
+              Available from </label>
+            <input class="input" #from placeholder="MM/dd/yyyy" formControlName="availableFromDate" [min]="minDate"
+              [max]="maxDate" [owlDateTimeTrigger]="dt11" [owlDateTime]="dt11">
+            <owl-date-time [startAt]="startAtForAvailable" (afterPickerClosed)="isValidDateRange(from.value,till.value)"
+              [pickerType]="'calendar'" #dt11></owl-date-time>
+
+
+
+
+          </div>
+          <div class="control">
+            <label class="label">
+              Available till </label>
+            <input class="input" #till placeholder="MM/dd/yyyy" formControlName="availableToDate" [min]="minDate"
+              [max]="maxDate" [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12">
+            <owl-date-time [startAt]="startAtForEndDate" (afterPickerClosed)="isValidDateRange(from.value,till.value)"
+              [pickerType]="'calendar'" #dt12></owl-date-time>
+
+
+            <!-- (afterPickerClosed)="calculateRent(from.value,till.value)" -->
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label class="label">Zip</label>
+          <div class="control">
+
+            <input class="input" type="text" #postalCode maxlength="5" minlength="5" placeholder="Postal Code"
+              formControlName="zipCode" (change)="getZipDetails()" #zip>
+
+            <span class="inValid"
+              *ngIf=" productForm.dirty &&  (productForm.controls['zipCode'].dirty || productForm.controls['zipCode'].touched) && productForm.controls['zipCode'].hasError('required')">
+              Zipcode <strong>required</strong>
+            </span>
+            <!-- <p *ngIf="currentLoc?.City" style="
+            margin: 5px 0px 10px 0px;
+        color: blue;
+        font-weight: 700;
+    ">{{currentLoc?.City}}, {{currentLoc?.State}}</p> -->
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">City/State</label>
+          <div class="control">
+
+            <input class="input" placeholder="city/state" formControlName="location" readonly />
+            <span class="inValid"
+              *ngIf=" productForm.dirty && (productForm.controls['location'].dirty || productForm.controls['location'].touched) &&  productForm.controls['location'].hasError('required')">
+              Location <strong>required</strong>
+            </span>
+
+          </div>
+        </div>
+
+
+
+        <div class="submitRow ">
+
+          <button mat-raised-button type="submit" color="primary" class="imageBtn">
+            Next
+          </button>
+
+
+        </div>
+
+
+      </form>
+      <!-- <div>
+        <button mat-button matStepperNext>Next</button>
+      </div> -->
+
+    </div>
+
+  </mat-step>
+  <mat-step>
+
+    <ng-template matStepLabel>Upload Images</ng-template>
+    <div class="matStepperContainer">
+
+      <app-upload [productID]="product?.productID" (uploadComplete)='displayNextStep($event)'></app-upload>
+      <div class="footernav">
+
+        <button mat-raised-button type="button" matStepperPrevious color="primary" class="imageBtn"
+          aria-label="Example icon-button">
+
+          Back
+        </button> &nbsp;&nbsp;
+        <button mat-raised-button type="button" matStepperNext color="primary" class="imageBtn"
+          aria-label="Example icon-button">
+
+          Next
+        </button>
+        <!-- <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button> -->
+      </div>
+    </div>
+    <!-- <div>
+      <button mat-button matStepperNext>Next</button>
+    </div> -->
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Review</ng-template>
+
+    <div class="matStepperContainer">
+      <ng-template matStepLabel>Review</ng-template>
+      <app-add-product-summary (makeLive)='addProductToLiveListings($event)' (goBack)='goBackOneStep($event)'>
+      </app-add-product-summary>
+
+    </div>
+    <!-- <div class="footernav">
+      <button mat-raised-button type="button" matStepperPrevious color="primary" class="imageBtn"
+        aria-label="Example icon-button">
+
+        Back
+      </button>
+    </div> -->
+
+  </mat-step>
+</mat-horizontal-stepper>

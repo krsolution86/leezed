@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "de5f662g",
+    "database": "leezed",
+    "host": "localhost",
+    "dialect": "mysql"
+   
+  },
+  "test": {
+    "username": "root",
+    "password": "de5f662g",
+    "database": "leezed",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "de5f662g",
+    "database": "leezed",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

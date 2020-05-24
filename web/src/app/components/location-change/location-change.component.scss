@@ -1,0 +1,25 @@
+.container{
+    padding: 16px;
+    background: #ffffff;
+    border: 1px dotted #f69b22;
+    color: #f69b22;
+    border-radius: 5px;
+    min-width: 20em;
+    font-size: 12px !important;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .locationActionBtn{
+    height: 25px;
+    /* width: 30px; */
+    font-size: 10px;
+    line-height: 20px;
+  }
+
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}

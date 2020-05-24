@@ -1,0 +1,40 @@
+<!-- <div class="card">  
+<figure class="image is-256x256">
+    <img src="{{product.thumbnailUrl}}" alt="Avatar" class="card-image" >
+  </figure>
+  <div class="container">
+    <h4><span matTooltip="{{product.name}}">{{product.name | slice:0:20}}...</span></h4> 
+    <p class="priceLbl"> {{product.rentPrice | currency}}&nbsp;{{product.durationUnitDesc}}, 
+    <b>{{product.zipCode}}</b>
+    </p>   
+    <div class='test'>
+      <div >
+        <button mat-flat-button class="rentBtn" (click)="OpenProduct(product.productID)">Rent Now</button>
+      </div>       
+    </div>
+  </div>
+</div> -->
+
+<div class="card" (click)="OpenProduct(product.productID)">
+  <div class="card-image">
+    <!-- is-4by3 -->
+    <figure class="image is-256x256 ">
+      <img src="{{product.thumbnailUrl}}" alt="Avatar" class="card-image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="content">
+      <p class="title is-5"><span matTooltip="{{product.name}}">{{product.name | slice:0:20}}</span></p>
+      <p class="subtitle is-6 priceLbl">
+        {{product.rentPrice | currency}}&nbsp;{{product.durationUnitDesc}}</p>
+      <p class="subtitle is-6 priceLbl"> <b>{{product.city}}, {{product.state}}</b>
+      </p>
+    </div>
+
+    <!-- <div class='test'>
+      <div >
+        <button mat-flat-button class="rentBtn" (click)="OpenProduct(product.productID)">Rent Now</button>
+      </div>       
+    </div> -->
+  </div>
+</div>

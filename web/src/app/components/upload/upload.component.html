@@ -1,0 +1,156 @@
+<div class="columns">
+	<div class="column" *ngFor="let img of productImages">
+		<!-- <button id = "x">
+            X
+        </button> -->
+				<div class="card"  >  
+					<mat-icon mat-icon-button  matTooltip="delete this image"(click)="deleteProductImage(img.imageName)"  class="dustbin">delete_forever</mat-icon>
+			<figure class="image is-256x256">
+				<img src="{{img.Url}}" alt="Avatar" class="card-image" >
+			  </figure>
+			
+					<!-- <div class='test'>
+				  <div >
+					<button mat-flat-button class="rentBtn" (click)="deleteProductImage(img.imageName)" >Delete</button>
+				  </div>       
+				
+			  </div> -->
+			</div>
+	</div>
+	
+  </div>
+  <br/>
+
+
+
+<div class="container ">
+	<div class="notification">
+		<div class="field">
+			<div class="file is-right is-info">
+				<label class="file-label">
+					<input class=" input file-input" id="singleFile1" #file1 (change)="onFilesAdded1()" type="file"
+						name="resume1">
+					<span class="file-cta">
+						<span class="file-icon">
+							<mat-icon> attach_file</mat-icon>
+						</span>
+						<span class="file-label" *ngIf="!(isHandset$ | async)">
+							Choose Image
+						</span>
+					</span>
+					<span class="file-name">
+						{{file1?.files[0]?.name}}
+					</span>
+					&nbsp;	&nbsp;	&nbsp;
+					<button class="button defaultBtn"  *ngIf="file1?.files[0]?.name" (click)="upload(0)">Upload</button>
+				</label>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="container">
+	<div class="notification">
+
+		<div class="field">
+			<div class="file is-right is-info">
+				<label class="file-label">
+					<input class="input file-input" id="singleFile2" #file2 (change)="onFilesAdded2()" type="file"
+						name="resume2">
+					<span class="file-cta">
+						<span class="file-icon">
+							<mat-icon> attach_file</mat-icon>
+						</span>
+						<span class="file-label" *ngIf="!(isHandset$ | async)">
+							Choose Image
+						</span>
+					</span>
+					<span class="file-name">
+						{{file2?.files[0]?.name}}
+					</span>
+					&nbsp;	&nbsp;	&nbsp;
+					<button class="button defaultBtn"  *ngIf="file2?.files[0]?.name"  (click)="upload(1)">Upload</button>
+				</label>
+			
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container ">
+	<div class="notification">
+
+		<div class="field">
+			<div class="file is-right is-info">
+				<label class="file-label">
+					<input class="file-input" id="singleFile3" #file3 (change)="onFilesAdded3()" type="file"
+						name="resume3">
+					<span class="file-cta">
+						<span class="file-icon">
+							<mat-icon> attach_file</mat-icon>
+						</span>
+						<span class="file-label" *ngIf="!(isHandset$ | async)">
+							Choose Image
+						</span>
+					</span>
+					<span class="file-name">
+						{{file3?.files[0]?.name}}
+					</span> &nbsp;	&nbsp;	&nbsp;
+					<button class="button defaultBtn"   *ngIf="file3?.files[0]?.name"  (click)="upload(2)">Upload</button>
+				</label>
+			
+			</div>
+		</div>
+
+	</div>
+</div> -->
+
+
+<!-- <div class="notification">
+<button class="button defaultBtn" (click)="upload()">Upload</button>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <label for="singleFile">Upload file</label>
+<input id="singleFile" #file  (change)="onFilesAdded()" type="file"/>
+<br>
+<button type="button" (click)="upload()">Upload Image</button> -->
+<!--  
+<mat-file-upload-queue
+	[fileAlias]="'file'"
+
+    [httpUrl]="'http://localhost:6272/v1/images/upload/2'"  #fileUploadQueue>
+ 
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue> -->
+
+
+<!-- 
+<div *ngIf="!files.length" class="col-12 rmpm dropzone" appDragDrop (files)="filesDropped($event)" (click)="openFilePicker()">
+	<div class="text-wrapper">
+		<div class="centered">Drop your file here!</div>
+	</div>
+</div>
+
+<div *ngFor="let file of files">
+  <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+</div>
+
+<button type="button" (click)="upload()">Upload Image</button> -->

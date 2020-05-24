@@ -1,0 +1,161 @@
+mat-expansion-panel{
+  max-width: 30rem!important;
+  margin: 0 auto!important;
+}
+.mat-expansion-panel-header-title {
+  color: rgb(255, 255, 255)!important;
+}
+
+.mat-expansion-panel {
+  background: #000!important;
+  color: rgba(255, 255, 255, 0.87)!important;
+  border:1px solid orange!important;
+  border-radius: 5px!important;
+margin-bottom: 5px!important;
+margin-top: 5px!important;
+
+}
+mat-panel-description {
+  color: white!important;
+}
+
+.productViewClass {
+  margin: 0px auto!important;
+  max-width: 50rem;
+}
+.prodImg{
+  max-width: 20rem!important;
+  border: 1px solid darkorange;
+  border-radius: 10px;
+}
+
+.input-row {
+
+  
+  text-align: left !important;
+  margin-left: 10px!important;
+  margin-bottom: 10px!important;
+}
+
+
+
+
+
+
+
+input[type=text], select {
+  width: 100%;
+  // padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  // border: 1px solid #ccc;
+  background: transparent!important;
+  color:white!important;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: none!important;
+  padding: 0px!important;
+}
+
+label.inputTypeLbl {
+  width: 100%;
+  // padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  // border: 1px solid #ccc;
+  background: transparent !important;
+  color: white !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: none!important;
+  padding: 0px!important;
+}
+
+
+.viewContainer {
+  background: black;
+  padding: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  margin: 5px;
+}
+label.vLabel {
+color: darkorange!important;
+font-weight: 700;
+}
+
+
+
+mat-form-field {
+background: white!important;
+border-radius: 10px!important;
+
+border: 3px solid #f49820!important;
+}
+
+.datePickerCustom {
+max-width: 14rem!important;
+margin: 5px!important;
+color: black!important;
+/* max-height: 97px; */
+}
+.panelBtn{
+  height: 28px!important;
+  font-size: 12px!important;
+  padding: 5px;
+  line-height: 20px!important;
+  /* background: #4CAF50!important; */
+  background: #11998e!important;
+  background: -webkit-linear-gradient(to top, #38ef7d, #11998e)!important;
+  background: linear-gradient(to top, #38ef7d, #11998e)!important;
+}
+.imgBtn{
+  height: 25px;
+}
+
+
+form.rentFromCls {
+background: #292929;
+border-radius: 10px;
+margin-top: 50px;
+color: white;
+padding: 15px;
+}
+p.rightLBL {
+margin-left: 5rem;
+background: black;
+padding: 10px;
+border-radius: 5px;
+}
+label.priceLbl {
+font-size: large;
+}
+
+
+
+#main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+#center-content {
+  flex:1 1 auto; /* Lets middle column shrink/grow to available width */
+}
+#left-content {
+  // flex:0 0 auto; /* Forces side columns to stay same width */
+   width:20%; /* Sets the width of side columns */
+}
+#right-content{
+  max-width: 120px!important;
+}
+
+
+
+::ng-deep .specific-class > .mat-expansion-indicator:after {
+  color: white!important;
+} 
+
+.mat-button.mat-accent[disabled], .mat-button.mat-primary[disabled], .mat-button.mat-warn[disabled], .mat-button[disabled][disabled], .mat-icon-button.mat-accent[disabled], .mat-icon-button.mat-primary[disabled], .mat-icon-button.mat-warn[disabled], .mat-icon-button[disabled][disabled], .mat-stroked-button.mat-accent[disabled], .mat-stroked-button.mat-primary[disabled], .mat-stroked-button.mat-warn[disabled], .mat-stroked-button[disabled][disabled] {
+  color: rgba(253, 241, 241, 0.24)!important;
+}

@@ -1,0 +1,68 @@
+<!-- <div class="card">
+    <div class="card-image">
+        <figure class="image is-4by3">
+            <img [src]="productSummary?.thumbnailImg" *ngIf="productSummary?.thumbnailImg" alt="product image">
+            
+        </figure>
+    </div>
+    <div class="card-content">
+
+        <div class="content">
+
+
+            <span class="productDesc">{{productSummary?.categoryName}}</span>
+            <span class="productDesc">{{productSummary?.productName}}</span>
+            <span class="productDesc">{{productSummary?.productDesc}}</span>
+
+            <br>
+            <time datetime="2016-1-1" style="font-size: 10px;">{{today}}</time>
+        </div>
+    </div>
+</div> -->
+
+
+<article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img [src]="productSummary?.thumbnailImg" *ngIf="productSummary?.thumbnailImg" alt="product image">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{productSummary?.productName}}</strong> <br/>
+              <small>{{productSummary?.categoryName}}</small> 
+              <br>
+              {{productSummary?.productDesc}}
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left live">
+           <a class="level-item">
+            <button mat-raised-button type="button" (click)="goBackStep()"  color="primary" class="imageBtn"
+            aria-label="Example icon-button">
+    
+            Back
+          </button>
+           </a>
+              <a class="level-item ">
+                <button mat-raised-button type="button" (click)="addToLiveList()"  color="primary" class="imageBtn"
+                aria-label="Example icon-button">
+        
+                Submit
+              </button>
+                <!-- <span class="icon "><mat-icon>add_to_queue</mat-icon></span>
+                &nbsp;&nbsp;&nbsp;   -->
+                  <!-- <button class="button is-black "  (click)="addToLiveList()">                
+                  Submit <span style="color:red">*</span></button> -->
+              </a>
+            </div>
+            <br>
+          
+          </nav>
+          <span class="warningText">* without adding to live list, your product won't be visible to aspiring renter!</span>
+        </div>
+        <div class="media-right">
+            <time datetime="2016-1-1" style="font-size: 10px;">{{today| date:'MMM,dd,yyy'}}</time>
+        </div>
+      </article>

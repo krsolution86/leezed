@@ -1,0 +1,201 @@
+<mat-accordion>
+        <mat-expansion-panel *ngFor="let ord of myOrders ;  let i=index;  "  (opened)="setStep(ord)"  hideToggle="false">
+          <mat-expansion-panel-header class="specific-class">
+            <mat-panel-title>
+      
+                <div id="main-container">
+                    <div id="left-content">
+                        <span class="pnLabel">Order- </span>#{{ord.orderID}}
+          
+                    </div>
+                    <div id="center-content">
+                     
+                    </div>
+          
+          
+                    <div id="right-content">
+          
+          
+                      <div class="row ">
+          
+                        <button mat-raised-button class="panelBtn"
+                         >
+                         {{ord?.isApproved?'Approved':'Pending Approval' }}
+                        </button>
+                     
+          
+          
+                      </div>
+          
+                    </div>
+                  </div>
+          
+      
+             
+            </mat-panel-title>
+           
+          </mat-expansion-panel-header>
+      
+          <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+      <div class="col" fxFlex>        <label for="pLoc" class="vLabel">Name</label>
+              <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                <span> {{ord.productName}}
+                </span>
+      
+              </p>
+            </div>
+      
+            <div class="col" fxFlex>        <label for="pLoc" class="vLabel">Price</label>
+              <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                <span> {{ord.rentPrice | currency}}
+                </span>
+      
+              </p>
+            </div>
+            </div>
+            
+            <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                <div class="col" fxFlex>
+                <!-- <label for="pLoc" class="vLabel">Offered By</label>
+                <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                  <span> {{ord?.ownerName}}    
+                  </span>    
+                </p>   -->
+      
+      
+                <label for="pLoc" class="vLabel">Rented From</label>
+                <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                  <span> {{ord.rentedFrom}}
+                     <!-- &nbsp; <star-rating value="4" checkedcolor="red" uncheckedcolor="white"
+                      size="24px" readonly="true"></star-rating> -->
+        
+                  </span>
+        
+                </p>
+              </div>
+      
+              <div class="col" fxFlex >
+                  <label for="pLoc" class="vLabel">Requested By</label>
+                  <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                    <span> {{ord?.requestedBy}}
+          
+                    </span>&nbsp; <star-rating value="4.5" checkedcolor="blue" uncheckedcolor="white"
+                    size="24px" readonly="true"></star-rating>
+          
+                  </p>
+      
+              </div>
+            
+              </div>
+            <!-- <div class="input-row">
+      
+              <label for="pLoc" class="vLabel">Rented From</label>
+              <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                <span> {{ord.rentedFrom}} &nbsp; <star-rating value="4" checkedcolor="red" uncheckedcolor="white"
+                    size="24px" readonly="true"></star-rating>
+      
+                </span>
+      
+              </p>
+      
+      
+            </div> -->
+          <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+            <div class="col" fxFlex>
+      
+              <label for="pLoc" class="vLabel">Rental Start</label>
+              <label class="inputTypeLbl" id="pLoca" name="pLoc">{{ord.rentalStartDate | date:'MMM-dd-yyyy' }}</label>
+      
+            </div>
+            <div class="col" fxFlex>
+      
+              <label for="pLoc" class="vLabel">Rental End</label>
+      
+              <label class="inputTypeLbl" id="pLoca" name="pLoc">{{ord.rentalEndDate |  date:'MMM-dd-yyyy'  }}</label>
+      
+      
+            </div>
+      
+      
+          </div>
+          <div class="input-row">
+      
+              <label for="pLoc" class="vLabel">Address</label>
+              <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                <span> {{ord?.location}}
+      
+                </span>
+      
+              </p>
+      
+      
+            </div>
+      
+          <div class="input-row">
+      
+              <label for="pLoc" class="vLabel">Pick-up Instructions</label>
+              <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                <span> {{ord?.pickupInstructions==""?'None':ord?.pickupInstructions}}
+      
+                </span>
+      
+              </p>
+      
+      
+            </div>
+         
+      
+            <div class="input-row">
+      
+                <label for="pLoc" class="vLabel">Comments</label>
+                <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                  <span> {{(ord?.approvalComments=="" || ord?.approvalComments==undefined || ord?.approvalComments==null)?'None':ord?.approvalComments}}
+        
+                  </span>
+        
+                </p>
+        
+        
+              </div>
+      
+      <!-- 
+              <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                  <div class="col" fxFlex>
+                  <label for="pLoc" class="vLabel">Offered By</label>
+                  <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                    <span> {{ord?.ownerName}}    
+                    </span>    
+                  </p>  
+                </div>
+      
+                <div class="col" fxFlex >
+                    <label for="pLoc" class="vLabel">Requested By</label>
+                    <p id="pLoca" name="pLoc" class="inputTypeLbl">
+                      <span> {{ord?.requestedBy}}
+            
+                      </span>
+            
+                    </p>
+      
+                </div>
+              
+                </div> -->
+                <mat-action-row *ngIf="(!(ord?.isApproved>0) )&& (ord.userID!==user.userID)">
+                    <button mat-button color="primary" disabled="{{ord?.isApproved>0}}" (click)="openApproveDialog(ord)">Approve</button>
+                    <button mat-button color="warn" disabled="{{ord?.isApproved>0}}" (click)="declineOrder(ord)">Decline</button>
+                  </mat-action-row>
+      
+      </mat-expansion-panel>
+      
+      
+      </mat-accordion>
+      
+      
+      <!-- <div class="panel-body">
+            <div class="example-container">
+              {{ord.rentedFrom }}<br/>
+              {{ord.rentalStartDate | date:'MM-dd-yyyy'}}<br/>
+              {{ord.rentalEndDate | date:'MM-dd-yyyy'}}<br/>
+              {{ord.rentPrice}}
+            </div>
+            -->

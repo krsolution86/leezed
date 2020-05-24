@@ -1,0 +1,197 @@
+<div class="productViewClass">
+
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{product.name}}</mat-card-title>
+    </mat-card-header>
+
+    <div class="demo-carousel">
+      <mat-carousel #matCarousel [timings]="timings" [autoplay]="autoplay" [interval]="interval" [loop]="loop"
+        [hideArrows]="hideArrows" [hideIndicators]="true" [color]="color" [maxWidth]="maxWidth"
+        [proportion]="proportion" [useKeyboard]="useKeyboard" [useMouseWheel]="useMouseWheel"
+        [orientation]="orientation" [slides]="slides" (change)="onChange($event)">
+        <mat-carousel-slide #matCarouselSlide *ngFor="let slide of product.images; let i = index"
+          [overlayColor]="overlayColor" [hideOverlay]="hideOverlay">
+          <img src="{{slide}}" alt="{{product.name}}" class="card-image">
+        </mat-carousel-slide>
+      </mat-carousel>
+    </div>
+
+
+
+    <mat-card-content>
+      <div class="viewContainer">
+        <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+          <div class="col" fxFlex>
+            <label for="price" class="vLabel">PRICE</label>
+            
+            <label class="inputTypeLbl" id="price" name="price">
+              {{product.rentPrice | currency}}&nbsp;per&nbsp;<span>{{product.durationUnit | titlecase }}</span></label>
+
+          </div>
+          <div class="col" fxFlex>
+            <label for="pLoc" class="vLabel">OFFERED BY</label>
+            <p id="pLoca" name="pLoc" class="inputTypeLbl">
+              <span> {{product.username}} 
+                <!-- &nbsp; 
+                <star-rating value="4" checkedcolor="red" uncheckedcolor="white"
+                  size="24px" readonly="true" (rate)="onRate($event)"></star-rating> -->
+
+              </span>
+
+            </p>
+          </div>
+
+
+        </div>
+        <div class="input-row">
+          <label for="minRental" class="vLabel">MINIMUM RENTAL</label>
+          <input type="text" id="minRental" name="minRental" [(ngModel)]="product.minRental" readonly>
+
+        </div>
+
+        <div class="input-row">
+          <label for="pdesc" class="vLabel">DESCRIPTION</label>
+
+          <textarea class="textarea inputTextArea "   id="pdesc" name="pdesc" [(ngModel)]="product.description" readonly></textarea>
+
+        </div>
+
+        <div class="input-row">
+          <label for="pCate" class="vLabel">CATEGORY</label>
+          <input type="text" id="pCate" name="pCate" [(ngModel)]="product.categoryName" readonly>
+
+        </div>
+
+        <div class="input-row">
+          <label for="pLoc" class="vLabel">LOCATION</label>
+          <input type="text" id="pLoca" name="pLoc" [(ngModel)]="product.location" readonly>
+
+        </div>
+
+        <!-- <div class="input-row"   >
+         
+          <label for="pLoc" class="vLabel">OFFERED BY</label>
+          <p  id="pLoca" name="pLoc"  class="inputTypeLbl" >
+            <span > {{product.username}} &nbsp; <star-rating  value="4" checkedcolor="red" uncheckedcolor="white" size="24px"    readonly="true" (rate)="onRate($event)"></star-rating>
+        
+            </span>
+
+          </p>
+       
+         
+        </div> -->
+
+
+        <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+          <div class="col" fxFlex>
+
+            <label for="pLoc" class="vLabel">AVAILABLE FROM</label>
+            <label class="inputTypeLbl" id="pLoca"
+              name="pLoc">{{product.availableFromDate | date:'MM-dd-yyyy' }}</label>
+            <!-- <input type="text" id="pLoca" name="pLoc" [(ngModel)]="product.availableFromDate" readonly>
+       -->
+          </div>
+          <div class="col" fxFlex>
+
+            <label for="pLoc" class="vLabel">AVAILABLE TILL</label>
+
+            <label class="inputTypeLbl" id="pLoca"
+              name="pLoc">{{product.availableToDate |  date:'MM-dd-yyyy'  }}</label>
+          </div>
+        </div>
+
+        <div class="autoCalcContainer">
+          <form *ngIf="rentNow" novalidate (ngSubmit)="onSubmit()" class="rentFromCls">
+            <div fxLayout="row">
+              <div fxFlex>
+                <label class="">
+                  Start Date:
+                  <input placeholder="mm/dd/yyyy" #from [min]="minDate" [max]="maxDate" class="owl-date"
+                    [owlDateTimeTrigger]="dt11" [owlDateTime]="dt11">
+                  <owl-date-time (afterPickerClosed)="calculateRent(from.value,till.value)" [pickerType]="'calendar'"
+                    #dt11></owl-date-time>
+                </label>
+              </div>
+                  <div fxFlex>
+                    <label class="">
+                      End Date:
+                      <input placeholder="mm/dd/yyyy" #till [min]="minDate" [max]="maxDate" class="owl-date"
+                        [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12">
+                      <owl-date-time (afterPickerClosed)="calculateRent(from.value,till.value)"
+                        [pickerType]="'calendar'" #dt12></owl-date-time>
+                    </label>
+                  </div>
+                      <div fxFlex>
+                        <div class="rightLBL">
+                          Cost: <label class="priceLbl">{{totalCost | currency}}</label></div>
+                        </div>
+                        </div>
+
+                        <!-- <div class="input-row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+              <label  class="" fxFlex>
+                Start Date:
+                <input 
+                placeholder="MM/dd/yyyy"
+                #from [min]="minDate" [max]="maxDate"
+             class="owl-date"
+                       [owlDateTimeTrigger]="dt11" [owlDateTime]="dt11"
+                      >
+                <owl-date-time  (afterPickerClosed)="calculateRent(from.value,till.value)"    [pickerType]="'calendar'" #dt11></owl-date-time>
+            </label>
+              
+            <label  class="" fxFlex>
+              End Date:
+              <input 
+              placeholder="MM/dd/yyyy"
+              #till [min]="minDate" [max]="maxDate" 
+              class="owl-date"
+                     [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12"
+                     >
+              <owl-date-time  (afterPickerClosed)="calculateRent(from.value,till.value)"   [pickerType]="'calendar'" #dt12></owl-date-time>
+          </label>
+            
+
+
+
+              
+
+                <div class="rightLBL" fxFlex>Cost: <label class="priceLbl">{{totalCost | currency}}</label></div>
+            </div>
+           -->
+          </form>
+
+          <div class="submitRow ">
+
+            <button mat-icon-button color="primary" class="imageBtn" [disabled]="isLoggedIn?(user?.userID==product?.ownerID):false"
+              (click)="rentNow?rentProduct():(isLoggedIn?(rentNow=(!rentNow)):goToLogin())" aria-label="Example icon-button">
+              <img src="./../../../assets/images/rentBtn.png" alt="RENT IT" *ngIf="!rentNow" style="
+                  height: 2rem;              
+              " />
+              <img src="./../../../assets/images/Submit_Btn.png" alt="SUBMIT" *ngIf="rentNow" style="
+                   height: 2rem;              
+               " />
+            </button>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+
+
+
+    </mat-card-actions>
+  </mat-card>
+
+</div>

@@ -1,0 +1,49 @@
+<form [formGroup]="resetPwdForm" novalidate (ngSubmit)="token?saveNewPassword():sendPwdResetMail()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+
+      <mat-card-title *ngIf="!token">
+        Please enter registered email Id to recieve reset link!
+      </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content class="auth-card-content">
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="token">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="New Password" formControlName="newPassword">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="token">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Confirm New Password" formControlName="confirmPassword">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <h3 *ngIf="sentMail && (!token)" style="color: #009688!important;"> Email with password reset link sent to your email
+        address!</h3>
+
+    </mat-card-content>
+    <mat-card-actions>
+
+      <button mat-raised-button color="primary" type="submit">{{token?"Save":"Send Reset Link"}}</button>
+
+
+
+
+    </mat-card-actions>
+  </mat-card>
+</form>

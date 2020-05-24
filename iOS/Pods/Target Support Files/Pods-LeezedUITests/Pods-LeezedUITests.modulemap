@@ -1,0 +1,6 @@
+framework module Pods_LeezedUITests {
+  umbrella header "Pods-LeezedUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

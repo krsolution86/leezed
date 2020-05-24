@@ -1,0 +1,241 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .primaryToolBar{
+height: 90px;
+@media (max-width:480px) {
+ 
+  height: auto;
+ 
+}
+  }
+  .sidenav .mat-toolbar {
+    background: inherit;
+    height: 100px!important;
+  }
+  .subTitle {
+    display: block;
+    position: relative;
+    top: -15px;
+    font-size: 11px;
+    font-weight: 600;
+    @media (max-width:480px) {
+      left: 0px;
+      height: auto;
+      left: 0;
+      position: relative;
+    }
+    left: 46px;
+    letter-spacing: 0.5px;
+}
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  .mat-drawer-container{
+    background-color: transparent!important;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.content {
+flex: 1; // child will set to an equal size inside the container
+}
+main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+.storeIcon{
+  min-height: 100%!important;
+  margin-left: 5px!important;
+  margin-right: 11px!important;
+  min-width: 50px!important;
+}
+.lblUser{
+  color: white;
+  font-size: 14px;
+}
+
+mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  color: white!important;
+}
+.appUserIcon{
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer!important;
+}
+// span.pull-right {
+//   position: absolute;
+//   right: 18px;
+//   font-weight: 700;
+//   text-decoration: underline;
+// }
+
+.searchbar {
+  display: block;
+  background: #f69b22;
+  padding: 2px 0px;
+  float:left;
+  min-height: 35px;
+  margin-bottom: 10px;
+}
+.anchorStyle{
+  cursor: pointer!important;
+  text-decoration: none!important;
+  color: #f69b22 !important;
+}
+.tada{
+  height: 14px;
+    width: 14px;
+    padding-right: 25px;
+    position: relative;
+    top: 5px;
+}
+.offer{
+  font-size: 14px;
+}
+.logoImg {
+  position: absolute;
+  width: 10rem;
+  max-height: 64px!important;
+  padding-top: 5px;
+  @media (max-width:480px) {
+    width: 8rem;
+    height: auto;
+    left: 0;
+    position: relative;
+  }
+}
+.popOverIcon{
+  background-color: #000000 !important;
+  color: #f69b22 !important;
+border: none!important;
+padding-right: 10px;
+outline: none;
+  
+
+}
+hr {
+  background-color: #FF9800;
+  border: none;
+  display: block;
+  height: 2px;
+  margin: 0px!important;
+}
+.userLabel{
+  display: block;
+    height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    padding: 0 16px !important;
+}
+.title-span{
+  font-size: 28px;
+  font-weight: 700;
+}
+.smalltext{
+  font-size: 3.2vmin !important;
+  padding: 0 1px !important;
+  color: white!important;
+  height: 2rem!important;
+  width: 6rem!important;
+  line-height: 25px !important;
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+  background-color: #f69b22!important;
+  color: white!important;
+}
+
+.mat-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+}
+
+button.sideNavMatbtn.mat-icon-button.mat-button-base {
+  width: auto!important;
+}
+
+mat-icon.Side.nav.toggle.icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  height: 64px;
+  width: 64px;
+  font-size: 60px;
+  line-height: 32px;
+  /* line-height: 42px; */
+}
+
+.logout {
+  width: 33px!important;
+  padding: 0!important;
+  min-width: 10px!important;
+}
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  color:#f69b22!important;
+}
+.footer{
+  position: absolute;
+    top: 99%!important;
+    /* left: 0; */
+    bottom: 0;
+}
+
+::ng-deep .mat-bottom-sheet-container{
+  min-width: 60vw!important;
+}
+
+
+
+.mat-input-element {
+  caret-color:darkorange!important;
+}
+
+// .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button, .mat-datepicker-toggle {
+//   color: white!important;
+// }
+
+// .mat-form-field-appearance-legacy .mat-form-field-underline {
+//   background-color: white!important;
+// }
+
+// .mat-form-field .mat-form-field-label {
+//   color: #ffffff!important;
+// }
+
+// .mat-form-field-appearance-legacy .mat-form-field-label {
+//   color: #f69b22!important;
+// }
+
+// .mat-form-field-hide-placeholder .mat-select-placeholder {
+//   color: #f69b22!important;
+//   -webkit-text-fill-color: #f69b22!important;
+ 
+// }

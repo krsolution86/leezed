@@ -1,0 +1,51 @@
+<div class="container">
+        <div class="field">
+               
+                <div class="control">
+                 <button mat-button (click)="useCurrentLoc()"><mat-icon>location_searching</mat-icon>&nbsp;User current location</button>
+                </div>
+              </div>
+              <br/>
+<span>------------------Or------------------</span><br/>
+<label>Show me products with in 10 miles of:</label>
+<div class="tile">
+
+        <!-- <div class="field"> -->
+                <!-- <label class="label">Postal</label> -->
+                <form class="example-form">
+                        <mat-form-field class="example-full-width">                      
+                                <input matInput placeholder="Enter postal code"
+                                 [(ngModel)]="userZipCode" 
+                                 name="zipcodeInput" minlength="5" mask="00000"
+                                (change)="getZipDetails()" #zip/>
+                        </mat-form-field>
+                      
+              <p *ngIf="currentLoc?.City" style="
+                  margin: 5px 0px 10px 0px;
+              color: blue;
+              font-weight: 700;
+          ">{{currentLoc?.City}}, {{currentLoc?.State}}</p>
+                      </form>
+                      
+               
+              <!-- </div> -->
+              
+</div>
+<div class="example-button-row">
+        <button mat-raised-button class="locationActionBtn" (click)="SetAsCurrentLoc()">Set</button>
+        <button mat-raised-button color="warn" class="locationActionBtn" (click)="CancelLocationSetup()">Cancel</button>
+    
+
+      </div>
+
+      
+      
+      <!-- <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-dark">Ok</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+    </div> -->

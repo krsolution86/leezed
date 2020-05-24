@@ -1,0 +1,188 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- fixedInViewport    [opened]="(isHandset$ | async) === false"      *ngIf="isHandset$ | async" -->
+  <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'over'">
+    <mat-toolbar>
+      <span><img src="./../assets/images/leezed.png" alt="Leezed" (click)="goToHome()"
+          [ngClass]="{ smalltext:isHandset$|async  }" style="
+          height: 1rem;
+   
+    cursor: pointer!important;
+    " /></span>
+      <!-- Menu -->
+    </mat-toolbar>
+    <mat-nav-list>
+
+      <a  mat-list-item  class="userLabel"  color="accent" *ngIf="authService.loggedIn$ | async" >
+        <mat-icon style="
+        color: #03A9F4!important;
+    ">verified_user</mat-icon>&nbsp;Hi {{user?.name}}
+      </a>
+      <hr/>
+<!-- <label class="userLabel" *ngIf="user?.name"> <mat-icon>verified_user</mat-icon>&nbsp;Hi {{user?.name}}</label> -->
+      <a mat-list-item color="primary" *ngIf="!(authService.loggedIn$ | async)"
+        (click)="navigate('signup')">Register</a>
+      <a mat-list-item color="accent" *ngIf="!(authService.loggedIn$ | async)" (click)="navigate('signin')">Log in</a>
+
+
+
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/add-product']">
+        <mat-icon>add_shopping_cart</mat-icon>&nbsp;Add Product
+      </a>
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/pendingapprovals']">
+        <mat-icon>lock</mat-icon>&nbsp;Pending Approvals
+      </a>
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/myitems']">
+        <mat-icon>view_module</mat-icon> &nbsp;My Products
+      </a>
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/myorders']">
+        <mat-icon>shopping_basket</mat-icon> &nbsp;Transactions
+      </a>
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/profile']">
+        <mat-icon>dashboard</mat-icon> &nbsp;Profile
+      </a>
+      
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" [routerLink]="['/how-it-works']">
+        <mat-icon>help</mat-icon> &nbsp;How it works
+      </a>
+      <a mat-list-item color="accent" *ngIf="authService.loggedIn$ | async" (click)="signOut()">
+          <mat-icon>power_settings_new</mat-icon>&nbsp;Log Out
+        </a>
+
+
+      <mat-divider></mat-divider>
+      <!-- <a mat-list-item (click)="signOut()">
+        <mat-icon>power_settings_new</mat-icon>&nbsp;Sign Out
+     
+      </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="primaryToolBar">
+      <button type="button" class="sideNavMatbtn" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon class="Side nav toggle icon" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+      <span class="logoImg"><img src="./../assets/images/leezed.png" alt="Leezed" (click)="goToHome()"
+           />
+          <span class="subTitle">The Local Market Place</span></span>
+
+      <span class="example-spacer"></span>
+      <span class="title-span" >
+        <a style="
+          color: white!important;
+      " *ngIf="authService.loggedIn$ | async" [routerLink]="['/add-product']" 
+      >
+          <mat-icon class="animated tada">camera_enhance</mat-icon><span class="offer">Offer Item</span>
+        </a>
+      </span>
+
+
+      <button satPopoverAnchor #anchor=satPopoverAnchor class="popOverIcon" (click)="anchor.popover.toggle()">
+        <img *ngIf="!(authService.loggedIn$ | async)" src="./../assets/images/Home_Btn.png" alt="Leezed"
+          class="appUserIcon" />
+        <img *ngIf="(authService.loggedIn$ | async)" matTooltip="{{user?.name}}" src="./../assets/images/Home-Selected_Btn.png" alt="Leezed"
+          class="appUserIcon" />
+
+
+      </button>
+
+
+
+
+      <sat-popover [anchor]="anchor" verticalAlign="below" hasBackdrop>
+        <div class="example-button-row">
+
+          <button (click)="signOut()" *ngIf="authService.loggedIn$ | async" class="button popOverIcon " color="primary"
+            [ngClass]="{ smalltext:isHandset$|async  }" matTooltip="Logout!">
+            <mat-icon style="  font-size: 20px; ">power_settings_new</mat-icon>&nbsp;Logout!
+          </button>
+
+          <button class="button popOverIcon" (click)="navigate('signin')" *ngIf="!(authService.loggedIn$ | async)"
+            color="primary" [ngClass]="{ 'smalltext  ':isHandset$|async  }" matTooltip="Login!">
+            <!-- <mat-icon *ngIf="isHandset$|async" matTooltip="Login!">folder_shared</mat-icon> -->
+            <mat-icon style="      font-size: 20px;  ">play_for_work</mat-icon> &nbsp;
+            Login
+          </button>
+        </div>
+
+      </sat-popover>
+
+
+      <!-- <div class="example-button-row" *ngIf="!(authService.loggedIn$ | async)">
+
+        <button mat-stroked-button (click)="navigate('signin')" *ngIf="!(authService.loggedIn$ | async)"
+          mat-raised-button color="primary" [ngClass]="{ 'smalltext cstm-menu-item logout':isHandset$|async  }"
+          matTooltip="Login!">
+          <mat-icon *ngIf="isHandset$|async" matTooltip="Login!">folder_shared</mat-icon>
+          <span *ngIf="!(isHandset$|async)"> Login</span>
+        </button>
+      </div>
+
+
+      <div class="example-button-row" *ngIf="!(authService.loggedIn$ | async)">
+
+        <button mat-stroked-button (click)="navigate('signup')" mat-raised-button color="primary"
+          [ngClass]="{ 'smalltext cstm-menu-item logout':isHandset$|async  }" matTooltip="Register!">
+          <mat-icon *ngIf="isHandset$|async" matTooltip="Register!">settings_input_antenna</mat-icon>
+          <span *ngIf="!(isHandset$|async)"> Register</span>
+        </button>
+      </div> -->
+
+
+
+
+    </mat-toolbar>
+
+    <main class="content">
+      <div class="searchbar" *ngIf="titleService.getTitle()!='Rent Items'">
+        <span class="title-span">{{titleService.getTitle()}}</span>
+
+<!-- <span class="pull-right" *ngIf="authService.loggedIn$ | async">Hi {{user?.name}}</span> -->
+      </div>
+      <router-outlet #outlet="outlet"></router-outlet>
+      <!-- <app-product-list></app-product-list> -->
+    </main>
+  
+    <mat-toolbar color='primary' class="footer">
+
+      <div fxLayout="row">
+
+        <div  fxFlex>
+          <p style="
+    font-size: 11px!important;
+    text-align: center;
+">© Copyright Leezed 2019. | <a class="anchorStyle"  (click)="showDialog('PP')">Privacy Policy</a> | <a class="anchorStyle"    (click)="showDialog('TOU')" >Terms Of Use</a> </p>
+        
+
+      
+      </div>
+
+        
+        <div fxFlex> <a class="btn btn-lg btn-success big-btn android-btn" href="#" style="float:right;">
+            <img width="80px" class="pull-left storeIcon" src="./../assets/images/applestore.png"></a></div>
+        <div fxFlex> <a class="btn btn-lg btn-success big-btn android-btn" href="#" style="float:right;">
+            <img width="80px" style="
+            margin-top: 4px;
+        " class="pull-left storeIcon" src="./../assets/images/google.png"></a>
+        </div>
+
+      </div>
+
+
+
+
+    </mat-toolbar>
+
+    <!-- <div class="row">
+        
+        <div class="col-md-8">
+         
+               
+            
+        </div>
+    </div> -->
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-loader></app-loader>

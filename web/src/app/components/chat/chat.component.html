@@ -1,0 +1,48 @@
+<div id="ChatRoom">
+  <div class="tile is-child ">
+      <div class="field has-addons">
+      <div class="control is-expanded has-icons-left">
+        <input class="ChatRoomMessageInput" class="input "[(ngModel)]="message" type="text" placeholder="Enter message" />
+        <span class="icon is-medium is-left">
+          <mat-icon>keyboard</mat-icon>
+         
+        </span>
+      </div>
+      <div class="control">
+        <button class="ChatRoomSendBtn" (click)="sendMessage()" class="button  is-dark">
+          Submit
+       
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+    <div class="tile is-ancestor">
+      <div class="tile is-8 is-vertical is-parent scroll">
+        <div class="tile is-child box"  *ngIf="chatHistory.length>0">
+          <div id="ChatRoomLog">
+            <div class="list is-hoverable">
+              <div class="list-item talk-bubble " *ngFor="let chat of chatHistory ">
+                <div class="talktext ">
+                  <p class="username"  [ngStyle]="{'color': chat?.fromUserID===order?.rentedFromUserID?'darkorange':'#FFEB3B'}">
+                    {{chat?.fromUserID===order?.rentedFromUserID?order.ownerName:order.requestedBy}}
+                    <span class="time chatDate">{{chat?.createdAt | date:'h:mm:ss a MMM dd, yyy'}}</span>
+                  </p>
+                  <span class="message">{{chat?.message}}</span>
+                  <!-- <p class="time chatDate">{{chat?.createdAt | date:'h:mm:ss a MMM dd, yyy'}}</p> -->
+
+                 
+                </div>
+              </div>
+            
+            </div>
+
+          </div>
+        </div>
+       
+      </div>
+
+     
+    </div>
+  </div>

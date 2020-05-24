@@ -1,0 +1,57 @@
+<form [formGroup]="profileForm" novalidate (ngSubmit)="SaveProfile()" >
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{this.user.name}}</mat-card-title>
+    
+    </mat-card-header>
+    <mat-card-content class="auth-card-content">
+      <!-- <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>email</mat-icon> <span> Email</span></mat-label>
+            <input matInput placeholder="Username (Email) " formControlName="email" readonly>
+          </mat-form-field>
+        </div>
+      </div>
+
+    
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>person_pin</mat-icon> <span> Name</span></mat-label>
+            <input matInput placeholder="Name (Optional)" formControlName="name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>people</mat-icon> <span> Screen Name</span></mat-label>
+            <input matInput placeholder="Screen Name)" formControlName="screenName">
+          </mat-form-field>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label><mat-icon>contact_phone</mat-icon> <span> Phone</span></mat-label>        
+            <input matInput type="text" minlength=10 maxlength=14 formControlName="phone" mask="(000) 000-0000"
+              id="materialContactFormPhone" class="form-control">
+          </mat-form-field>
+        </div>
+      </div>
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Update</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
