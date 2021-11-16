@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "aws-sdk": "^2.543.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.5",
     "cookie-parser": "~1.4.4",
